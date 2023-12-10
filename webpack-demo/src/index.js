@@ -1,5 +1,11 @@
 import _ from 'lodash';
-import { myname } from './myName';
+import './style.css';
+import icon from './icon.png';
+
+// import csv, xml
+import Data from './data.csv';
+import Notes from './data.xml';
+// import { myname } from './myName';
 function component() {
     const element = document.createElement('div');
   
@@ -7,7 +13,21 @@ function component() {
     // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
   
     // Using the function from myName.js module
-    element.textContent = myname('Jaunty')
+    // element.textContent = myname('Jaunty')
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    // Add a css element to showcase bundling of css
+    element.classList.add('hello');
+
+    // Add icon to showcase bundling of assets
+    const myIcon = new Image();
+    // src method from the Image class extended from the HTMLImageElement interface
+    myIcon.src = icon;
+    element.appendChild(myIcon);
+
+    // Logging Data to showcase bundling of .csv and .xml
+    console.log(Data);
+    console.log(Notes);
+
     return element;
   }
   

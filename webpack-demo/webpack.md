@@ -26,6 +26,24 @@
 
 - To prevent any html file in the /dist to be overwritten, we can tell Webpack to use a template and provide a path to it in webpack.config.js
 
+### Using loaders for bundling multiple types of files
 - The dependency graph concept can be extended to CSS etc. as well
 
-- 
+- In the following exercise to bundle CSS with JS, let;s install and add style-loader and css-loader to module configuration. We won't use these in production, hence use --save-dev
+
+    - We'll add module loaders(which can be chained together) in the webpack.config.js
+        - Each loader in the chain applies transformations to the processed resource. A chain is executed in reverse order. The first loader passes its result (resource with applied transformations) to the next one, and so forth. Finally, webpack expects JavaScript to be returned by the last loader in the chain
+        - In our exercise, style-loader will come first to configure the module chain to then accept the css-loader. In Webpack while using a module chain, the order is very important
+
+- We'll also see how to minimise css:
+    - A plugin such as css-minimizer-webpack-plugin can be used
+
+- To bundle images, we can use Webpack's built in Asset Modules
+    - After the image added in the index.js is processed by webpack, it will be added to the output directory, with icon variable containing url of the final image
+    - The css-loader will now process the url, recognizing this is a local file and will replace the icon.png path with final path of the image in the **/dist**
+    - The html-loader handles <img src...> in the same manner
+
+- Let's use Webpack to bundle data files such as JSON, CSV, TSV, XML
+    - json support is by default, csv; tsv; xml are to be loaded with csv-loader and xml-loader
+
+    - **This can be especially helpful when implementing some sort of data visualization using a tool like d3. Instead of making an ajax request and parsing the data at runtime you can load it into your module during the build process so that the parsed data is ready to go as soon as the module hits the browser.**
