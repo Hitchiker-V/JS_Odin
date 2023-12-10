@@ -26,6 +26,12 @@
 
 - To prevent any html file in the /dist to be overwritten, we can tell Webpack to use a template and provide a path to it in webpack.config.js
 
+- *If Webpack bundles include a hash in the filename, which will change on every compilation, which makes the browser to get the latest version of the file from the server instead of using a cached one whenever it has a new hash*
+
+-  plugins to be added in the Webpack config file
+    - To get forth with the demo, we'll remove the html file from the /dist and move to /src to show automatic generation in /dist
+    - Use the template property of this plugin to generate an html file based on the specified template
+
 ### Using loaders for bundling multiple types of files
 - The dependency graph concept can be extended to CSS etc. as well
 
@@ -47,3 +53,4 @@
     - json support is by default, csv; tsv; xml are to be loaded with csv-loader and xml-loader
 
     - **This can be especially helpful when implementing some sort of data visualization using a tool like d3. Instead of making an ajax request and parsing the data at runtime you can load it into your module during the build process so that the parsed data is ready to go as soon as the module hits the browser.**
+

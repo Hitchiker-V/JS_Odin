@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import './style.css';
-import icon from './icon.png';
+import icon from './assets/icon.png';
 
 // import csv, xml
-import Data from './data.csv';
-import Notes from './data.xml';
+import Data from './assets/data.csv';
+import Notes from './assets/data.xml';
 // import { myname } from './myName';
+
 function component() {
     const element = document.createElement('div');
   
