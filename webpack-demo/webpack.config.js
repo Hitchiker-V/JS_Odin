@@ -2,22 +2,29 @@ const path = require('path');
 // Let's import the HTML Webpack Plugin to automatically generate the html file using a template
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    entry: './src/index.js',
+    // entry: './src/index.js'
+    entry: {
+        index: './src/index.js',
+        print: './src/print.js',
+    },
     output: {
         // filename: 'main.js',
-        filename: 'bundle.js',
+        // filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     // Let's add html-webpack-plugin
     plugins:[
         new HtmlWebpackPlugin({
             // Let's declare a template to generate the html file based on
-            template: './src/index.html',
-            // title: 'Webpack HTML Plugin demo',
-            filename: 'index.html',
-            inject: 'body',
+            // template: './src/index.html',
+            title: 'Output Management',
+            // filename: 'index.html',
+            // inject: {
+            //     'head'
             // If injecting script tag in head, we can use 'scriptLoading' attribute to 'defer' 
-        })
+        }),
     ],
     module:{
         rules:[
