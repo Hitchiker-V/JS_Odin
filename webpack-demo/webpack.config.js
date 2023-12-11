@@ -3,9 +3,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     // entry: './src/index.js'
+    mode: 'development',
     entry: {
         index: './src/index.js',
         print: './src/print.js',
+    },
+    // devtool: 'inline-source-map',
+    // Adding devServer for webpack-dev-server
+    devServer: {
+        static: './dist', // Running the dev server in the dist dir
     },
     output: {
         // filename: 'main.js',
@@ -14,12 +20,18 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
+    optimization: {
+        runtimeChunk: 'single', // This is important for utilising Code Splitting ability in Webpack
+        // Added because we have more than one entrypoint on a single HTML page
+    },
     // Let's add html-webpack-plugin
     plugins:[
         new HtmlWebpackPlugin({
             // Let's declare a template to generate the html file based on
             // template: './src/index.html',
-            title: 'Output Management',
+            // title: 'Output Management',
+            title: 'Development',
+
             // filename: 'index.html',
             // inject: {
             //     'head'

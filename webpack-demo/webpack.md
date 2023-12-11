@@ -57,4 +57,21 @@
 ### Let's learn about output management (Webpack)
 How to manage multiple bundle files generated from multiple entry points is what we'll learn while also using html-webpack-plugin
 
-- 
+### Let's learn about setting a development environment for Webpack
+- Add mode to Development
+- Very useful due to source maps
+    - After bundling, it can become difficult to track down errors and warning -> Source maps map compiled code to original source code.
+    - Let's use inline-source-map option for this exercise
+- Another cool thing about development mode of Webpack is autocompile (build /dist) code via either of :    
+    - Watch Mode (webpack)
+    - webpack-dev-server package (should be used)
+    - webpack-dev-middleware package
+
+    - Let's look at Watch Mode:
+        - Add npm script in package.json ("watch": "webpack --watch")
+
+    - Let's look at webpack-dev-server:
+        - Live reloading and auto compiling
+        - This doesn't write any output files after compiling but keeps bundle files in memory to serve them as if reading from real files mounted at the server's root path
+        - This is built over the webpack-dev-middleware that emits files processed by webpack
+    
