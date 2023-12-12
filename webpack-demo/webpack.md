@@ -62,6 +62,7 @@ How to manage multiple bundle files generated from multiple entry points is what
 - Very useful due to source maps
     - After bundling, it can become difficult to track down errors and warning -> Source maps map compiled code to original source code.
     - Let's use inline-source-map option for this exercise
+        - **Note:** using inline-** or eval-** in prod will only increase the bundle size and reduce performance. Best to use 'source-map' as a devtool for strong source mapping in production to catch all those nasty errors
 - Another cool thing about development mode of Webpack is autocompile (build /dist) code via either of :    
     - Watch Mode (webpack)
     - webpack-dev-server package (should be used)
@@ -75,3 +76,10 @@ How to manage multiple bundle files generated from multiple entry points is what
         - This doesn't write any output files after compiling but keeps bundle files in memory to serve them as if reading from real files mounted at the server's root path
         - This is built over the webpack-dev-middleware that emits files processed by webpack
     
+### Using webpack-merge to build on dev or prod
+- The goals of development and production builds differ greatly. In development, we want strong source mapping and a localhost server with live reloading or hot module replacement.
+- In production, our goals shift to a focus on minified bundles, lighter weight source maps, and optimized assets to improve load time. ***To do this, recommended to write separate webpack configurations***
+    - We will still maintain a "common" configuration to keep things simple and use webpack-merge
+    - Let's create a webpack.common.js to have all the base configs such as entry point, output, plugins
+    - Let's create a webpack.dev.js and webpack.prod.js to have the configs for dev and prod (attributes such as mode, devtool)
+    - Now we'll modify the npm scripts by modifying start and build script (build -> prod hence config to webpack.prod.js)

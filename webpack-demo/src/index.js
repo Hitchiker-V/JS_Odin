@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import './style.css';
 // import icon from './assets/icon.png';
-import printMe from './print.js';
+// import printMe from './print.js';
 
 // import csv, xml
 // import Data from './assets/data.csv';
@@ -21,8 +21,8 @@ function component() {
     // Add a css element to showcase bundling of css
     // element.classList.add('hello');
     btn.innerHTML = 'Click me';
-    btn.onclick = printMe;
-    element.appendChild(btn);
+    // btn.onclick = printMe;
+    // element.appendChild(btn);
     // Add icon to showcase bundling of assets
     // const myIcon = new Image();
     // src method from the Image class extended from the HTMLImageElement interface
